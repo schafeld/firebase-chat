@@ -5,3 +5,4 @@ Based on a [Google Firebase tutorial](https://codelabs.developers.google.com/cod
 
 ## License
 See [LICENSE](LICENSE)
+Basically a derivative work from a Google tutorial under Apache license.
