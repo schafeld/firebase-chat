@@ -56,7 +56,15 @@ function isUserSignedIn() {
 
 // Saves a new message on the Firebase DB.
 function saveMessage(messageText) {
-  // TODO 7: Push a new message to Firebase.
+  // Push a new message to Firebase.
+  return firebase.firestore().collection('messages').add({
+    name: getUserName(),
+    txt: messageText,
+    profilePicUrl: getProfilePicUrl(),
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  }).catch(function(error) {
+    console.error('Error writing new message to database', error);
+  });
 }
 
 // Loads chat messages history and listens for upcoming ones.
