@@ -59,7 +59,7 @@ function saveMessage(messageText) {
   // Push a new message to Firebase.
   return firebase.firestore().collection('messages').add({
     name: getUserName(),
-    txt: messageText,
+    text: messageText,
     profilePicUrl: getProfilePicUrl(),
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
   }).catch(function(error) {
@@ -69,7 +69,22 @@ function saveMessage(messageText) {
 
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
-  // TODO 8: Load and listens for new messages.
+  // Load most recent 12 messages and listen for new ones.
+  var query = firebase.firestore()
+                  .collection('messages')
+                  .orderBy('timestamp', 'desc')
+                  .limit(12);
+  // Start listening
+  query.onSnapshot(function(snapshot){
+    snapshot.docChanges().forEach(function(change) {
+      if (change.type === 'removed') {
+        deleteMessage(change.doc.id);
+      } else {
+        var message = change.doc.data();
+        displayMessage(change.doc.id, message.timestamp, message.name, message.text, message.profilePicUrl, message.imageUrl);
+      }
+    });
+  });
 }
 
 // Saves a new message containing an image in Firebase.
