@@ -14,6 +14,12 @@ With local server running, configuration files with app details like URLs are in
 ```shell
 http://localhost:5000/__/firebase/init.js
 ```
+
+Deploy webpage(s) and open deployed site:
+```shell
+firebase deploy --except functions
+firebase open hosting:site
+```
 ## License
 See [LICENSE](LICENSE)
 Basically a derivative work from a Google tutorial under Apache license.
