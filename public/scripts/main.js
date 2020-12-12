@@ -15,7 +15,7 @@
  */
 'use strict';
 
-// Signs-in Friendly Chat.
+// Signs-in Olli (Friendly) Chat.
 function signIn() {
   // alert('TODO: Implement Google Sign-In');
   // Sign in Firebase with credential from the Google user.
@@ -23,7 +23,7 @@ function signIn() {
   firebase.auth().signInWithPopup(provider);
 }
 
-// Signs-out of Friendly Chat.
+// Signs-out of Olli (Friendly) Chat.
 function signOut() {
   // Sign out of Firebase.
   firebase.auth().signOut();
