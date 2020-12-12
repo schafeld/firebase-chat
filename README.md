@@ -1,7 +1,7 @@
 # Firebase-Chat
 A basic chat app based on Firebase
 
-Based on a [Google Firebase tutorial](https://codelabs.developers.google.com/codelabs/firebase-web#1), [starter code](https://github.com/firebase/codelab-friendlychat-web).
+Based on a [Google Firebase tutorial](https://codelabs.developers.google.com/codelabs/firebase-web#1), [starter code](https://github.com/firebase/codelab-friendlychat-web) and [Tutorial part 2](https://codelabs.developers.google.com/codelabs/firebase-cloud-functions?hl=en#0).
 
 ## Instructions and notes
 
