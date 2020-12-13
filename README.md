@@ -20,6 +20,9 @@ Deploy webpage(s) and open deployed site:
 firebase deploy --except functions
 firebase open hosting:site
 ```
+
+## Cloud Vision API
+For details see [Cloud Vision API chapter](https://codelabs.developers.google.com/codelabs/firebase-cloud-functions?hl=en#8) of basic tutorial.
 ## License
 See [LICENSE](LICENSE)
 Basically a derivative work from a Google tutorial under Apache license.
