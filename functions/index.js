@@ -120,3 +120,23 @@ exports.sendNotifications = functions.firestore.document('message/{messageId}').
     }
   }
 );
+
+// Cleans up the tokens that are no longer valid.
+function cleanupTokens(response, tokens) {
+  // For each notification we check if there was an error.
+  const tokensDelete = [];
+  response.results.forEach((result, index) => {
+    const error = result.error;
+    if (error) {
+      console.error('Failure sending notification to', tokens[index], error);
+      // Cleanup the tokens who are not registered anymore.
+      if (error.code === 'messaging/invalid-registration-token' ||
+          error.code === 'messaging/registration-token-not-registered') {
+        const deleteTask = admin.firestore().collection('fcmTokens').doc(tokens[index]).delete();
+        tokensDelete.push(deleteTask);
+      }
+    }
+  });
+  return Promise.all(tokensDelete);
+ }
+ 
